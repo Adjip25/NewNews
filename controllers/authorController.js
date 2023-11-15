@@ -2,7 +2,7 @@ const { compareHash } = require("../helpers/bcrypt");
 const { signToken } = require("../helpers/jwt");
 const { Author } = require("../models");
 
-class authorController {
+class AuthorController {
   static async register(req, res, next) {
     try {
       const { username, email, password } = req.body;
@@ -23,7 +23,6 @@ class authorController {
   static async login(req, res, next) {
     try {
       const { email, password } = req.body;
-      // console.log(email, password);
       if (!email || !password) {
         throw new Error("Please input email/password");
       }
@@ -50,4 +49,4 @@ class authorController {
   }
 }
 
-module.exports = authorController;
+module.exports = AuthorController;
