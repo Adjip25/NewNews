@@ -1,4 +1,4 @@
-class authorController {
+class AuthorController {
   static async register(req, res, next) {
     try {
       const { username, email, password, role } = req.body;
@@ -15,6 +15,11 @@ class authorController {
       next(error);
     }
   }
+
+  static async login(req, res, next) {
+    try {
+    } catch (error) {}
+  }
 }
 
-module.exports = authorController;
+module.exports = AuthorController;
