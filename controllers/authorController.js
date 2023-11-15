@@ -1,13 +1,15 @@
+const { compareHash } = require("../helpers/bcrypt");
+const { signToken } = require("../helpers/jwt");
 const { Author } = require("../models");
 
 class AuthorController {
   static async register(req, res, next) {
     try {
-      const { username, email, password, role } = req.body;
-      const newUser = { username, email, password, role };
-      const response = await Author.create(newUser);
+      const { username, email, password } = req.body;
+      const newAuthor = { username, email, password };
+      const response = await Author.create(newAuthor);
       if (!response) {
-        throw new Error("CREATE NEW USER FAILED");
+        throw new Error("CREATE NEW AUTHOR FAILED");
       }
       res.status(200).json({
         msg: `User id ${response.id} successfully created`,
